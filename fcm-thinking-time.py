@@ -162,7 +162,7 @@ last_timestamp = start_of_game_timestamp
 last_player = 'GAME'
 for action in parsed_actions:
     logging.info(f"{action['timestamp']} - player:{action['player']} {action['type']} - {action['options']}")
-    time_spent = (action['timestamp'] - last_timestamp).seconds
+    time_spent = (action['timestamp'] - last_timestamp).total_seconds()
     if action['player'] == 'GAME' and last_player != 'GAME':
         players_thinking_time[last_player] += time_spent
     elif last_player == 'GAME' and action['player'] != 'GAME':
